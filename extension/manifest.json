@@ -3,15 +3,15 @@
     "version": "1.0",
     "name": "HACK.COMS Anti-Doomscroller",
     "icons": {
-        "48": "/img/icon.svg",
-        "96": "/img/icon.svg"
+        "48": "/img/icon.png",
+        "96": "/img/icon.png"
     },
     "action": {
         "default_icon": {
-            "16": "/img/icon.svg",
-            "32": "/img/icon.svg",
-            "48": "/img/icon.svg",
-            "128": "/img/icon.svg"
+            "16": "/img/icon.png",
+            "32": "/img/icon.png",
+            "48": "/img/icon.png",
+            "128": "/img/icon.png"
         },
 
         "default_popup" : "prompt.html"
