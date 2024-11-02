@@ -1,34 +1,33 @@
 {
-    "manifest_version":2,
-    "version":"1.0",
-    "name":"HACK.COMS Anti-Doomscroller",
+    "manifest_version": 3,
+    "version": "1.0",
+    "name": "HACK.COMS Anti-Doomscroller",
     "icons": {
         "48": "/img/icon.svg",
         "96": "/img/icon.svg"
     },
-    "browser_action":{
-        "default_icon":{
-            "19":"/img/icon.svg",
-            "38":"/img/icon.svg"
+    "action": {
+        "default_icon": {
+            "19": "/img/icon.svg",
+            "38": "/img/icon.svg"
         }
     },
-    
     "permissions": [
-        "<all_urls>",
         "browsingData",
-        "contextualIdentities",
         "cookies",
         "management",
+        "privacy",
         "storage",
         "tabs",
-        "webRequestBlocking",
         "webRequest"
     ],
-    
-    "content_scripts":[
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "content_scripts": [
         {
-        "matches":["<all_urls>"],
-        "js":["main.js"]
+            "matches": ["<all_urls>"],
+            "js": ["main.js"]
         }
     ]
-  }
+}
