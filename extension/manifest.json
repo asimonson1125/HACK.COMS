@@ -8,8 +8,10 @@
     },
     "action": {
         "default_icon": {
-            "19": "/img/icon.svg",
-            "38": "/img/icon.svg"
+            "16": "/img/icon.svg",
+            "32": "/img/icon.svg",
+            "48": "/img/icon.svg",
+            "128": "/img/icon.svg"
         }
     },
     "permissions": [
@@ -19,15 +21,22 @@
         "privacy",
         "storage",
         "tabs",
-        "webRequest"
+        "webRequest",
+        "activeTab",
+        "scripting"
     ],
+
     "host_permissions": [
         "<all_urls>"
     ],
     "content_scripts": [
         {
             "matches": ["<all_urls>"],
-            "js": ["main.js"]
+            "js": ["utils.js", "main.js"]
         }
-    ]
+    ],
+    "background": {
+        "service_worker": "background.js",
+        "scripts": ["background.js"]
+    }
 }
