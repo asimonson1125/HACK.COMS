@@ -59,6 +59,10 @@
                 box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
                 transform: translateY(0);
             }
+
+            .countdown {
+                font-size: xx-large;
+            }
         </style>
     </head>
 
@@ -68,8 +72,12 @@
         
         <!--Container w/ id attribute that will be used to display the popup box-->
         <input type = "time" id = "TimeInput">
-        <!--<button id = "timeInput">Submit</button>
-        <button type="button">Click Me!</button>-->
+        <div>
+            <h2>
+                Time Remaining:
+            </h2>
+            <div class="countdown">__:__</div>
+        </div>
         <button class="button-5" role="button">Submit</button>
         <p id = "output"></p>
         <script src = "prompt.js"></script>

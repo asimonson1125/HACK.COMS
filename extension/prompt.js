@@ -1,6 +1,6 @@
 //Adding event listener to the button
 
-document.getElementByClass("Button-5").addEventListener("button", function() {
+document.querySelector(".button-5").addEventListener("button", function() {
 
     const timeInput = document.getElementById("TimeInput").value;
 
@@ -17,7 +17,17 @@ document.getElementByClass("Button-5").addEventListener("button", function() {
         totalSecond = (min * 60) + second;
 
     }
-    else[
+    else{
         //error handling.....
-    ]
+    }
 })
+
+function updateCountdown(){
+    const timeRemaining = getRemaining();
+    document.querySelectorAll('.countdown').forEach((x) => {
+        x.textContent = timeRemaining;       
+    })
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
