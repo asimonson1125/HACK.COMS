@@ -7,12 +7,14 @@ document.getElementByClass("Button-5").addEventListener("button", function() {
     //split the input into two numbers
     const parts = timeInput.split(":");
 
+    min = parseInt(parts[0], 10);
+    second = parseInt(parts[1], 10);
     //checking for valid input
-    if(parts[0] <= 12 && parts[1] <= 12 && parts[0] >= 0 && parts[1] >= 0){
+    if(min <= 12 && second <= 12 && min >= 0 && second >= 0){
 
         var totalSecond = 0;
 
-        totalSecond = (parts[0] * 60) + parts[1];
+        totalSecond = (min * 60) + second;
 
     }
     else[
