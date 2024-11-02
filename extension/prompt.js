@@ -7,7 +7,7 @@ document.querySelector(".button-5").addEventListener("click", function() {
 
     const hrInput = document.getElementById("hourInput").value;
     const minInput = document.getElementById("minuteInput").value;
-    const secInput = document.getElementById("secInput").value;
+    const secInput = document.getElementById("secondsInput").value;
 
 
 
@@ -18,6 +18,7 @@ document.querySelector(".button-5").addEventListener("click", function() {
 
 
    totalSecond = (hr * 3600) + (min * 60) + sec;
+//    document.querySelector('h1').textContent = totalSecond;
 
 
 }
