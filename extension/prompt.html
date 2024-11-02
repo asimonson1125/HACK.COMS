@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<!--this is an html comment!-->
+
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width= device-width, initial-scale = 1.0">
+        <title>Time</title>
+        <style>
+        /* CSS */
+
+            
+            /*padding for text box*/
+            body {
+                padding:.5em;
+            }
+            .button-5 {
+                align-items: center;
+                background-clip: padding-box;
+                background-color: #fa6400;
+                border: 1px solid transparent;
+                border-radius: .25rem;
+                box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+                box-sizing: border-box;
+                color: #fff;
+                cursor: pointer;
+                display: inline-flex;
+                font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+                font-size: 16px;
+                font-weight: 600;
+                justify-content: center;
+                line-height: 1.25;
+                margin: 0;    /*spacing outside the button*/
+                min-height: 3rem;
+                padding: calc(.875rem - 1px) calc(1.5rem - 1px);  /*spacing inside the button*/
+                position: relative;
+                text-decoration: none;
+                transition: all 250ms;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+                vertical-align: text-bottom; /*baseline*/
+                width: auto;
+            }
+            
+            .button-5:hover,
+            .button-5:focus {
+                background-color: #fb8332;
+                box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+            }
+            
+            .button-5:hover {
+                transform: translateY(-1px);
+            }
+            
+            .button-5:active {
+                background-color: #c85000;
+                box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+                transform: translateY(0);
+            }
+        </style>
+    </head>
+
+
+    <body>
+        <h1 style="color:black; text-align: center;">Timer</h1>
+        
+        <!--Container w/ id attribute that will be used to display the popup box-->
+        <input type = "time" id = "TimeInput">
+        <!--<button id = "timeInput">Submit</button>
+        <button type="button">Click Me!</button>-->
+        <button class="button-5" role="button">Submit</button>
+        <p id = "output"></p>
+        <script src = "prompt.js"></script>
+    </body>
+
+
+</html>
+
+<!-- HTML !-->

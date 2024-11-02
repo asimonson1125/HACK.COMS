@@ -12,7 +12,9 @@
             "32": "/img/icon.svg",
             "48": "/img/icon.svg",
             "128": "/img/icon.svg"
-        }
+        },
+
+        "default_popup" : "prompt.html"
     },
     "permissions": [
         "browsingData",
