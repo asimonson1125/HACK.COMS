@@ -1,23 +1,24 @@
 //Adding event listener to the button
 
-document.getElementByClass("Button-5").addEventListener("button", function() {
 
-    const timeInput = document.getElementById("TimeInput").value;
+var totalSecond = 0;
+document.querySelector(".button-5").addEventListener("click", function() {
 
-    //split the input into two numbers
-    const parts = timeInput.split(":");
 
-    min = parseInt(parts[0], 10);
-    second = parseInt(parts[1], 10);
-    //checking for valid input
-    if(min <= 12 && second <= 12 && min >= 0 && second >= 0){
+    const hrInput = document.getElementById("hourInput").value;
+    const minInput = document.getElementById("minuteInput").value;
+    const secInput = document.getElementById("secInput").value;
 
-        var totalSecond = 0;
 
-        totalSecond = (min * 60) + second;
 
-    }
-    else[
-        //error handling.....
-    ]
-})
+
+    var hr = parseInt(hrInput, 10);
+    var min = parseInt(minInput, 10);
+    var sec = parseInt(secInput, 10);
+
+
+   totalSecond = (hr * 3600) + (min * 60) + sec;
+
+
+}
+)
