@@ -10,11 +10,25 @@
         <style>
         /* CSS */
 
-            
-            /*padding for text box*/
-            body {
-                padding:.5em;
+            .timer {
+              color: black;
+              text-align: center;
             }
+
+            .time-input {
+              padding: 5px; /*inside*/
+              margin-bottom: 10px;  /*outside*/
+            }
+
+            /*padding for submit button*/
+            body {
+              padding:.5em;
+              /*border: 1px solid red;*/
+              margin-left: 100px;
+              margin-right: 100px;
+
+            }
+
             .button-5 {
                 align-items: center;
                 background-clip: padding-box;
@@ -40,7 +54,7 @@
                 user-select: none;
                 -webkit-user-select: none;
                 touch-action: manipulation;
-                vertical-align: text-bottom; /*baseline*/
+                vertical-align: baseline; /*baseline*/
                 width: auto;
             }
             
@@ -68,16 +82,13 @@
 
 
     <body>
-        <h1 style="color:black; text-align: center;">Timer</h1>
+        <h1 class="timer">Timer</h1>
         <input type = "number" id = "hourInput", placeholder = "00", min = "0" max = "100">
         <span class="colon">:</span>
         <input type = "number" id = "minuteInput", placeholder = "00", min = "0", max = "59">
         <span class="colon">:</span>
         <input type="number" id="secondsInput", placeholder="00", min = "0", max = "59">
-
-        
         <!--Container w/ id attribute that will be used to display the popup box-->
-        <input type = "time" id = "TimeInput">
         <div>
             <h2>
                 Time Remaining:
