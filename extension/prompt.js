@@ -14,6 +14,21 @@ document.querySelector(".timer__btn--start").addEventListener("click", function(
 
 })
 
+function resetTime(){
+    document.querySelector(".timer__btn--reset").addEventListener("click", function(){
+
+
+        // console.log("test");
+        totalSeconds = 0;
+
+        document.getElementById("hourInput").value = "";
+        document.getElementById("minuteInput").value = "";
+        document.getElementById("secondInput").value = "";
+
+        document.querySelector(".countdown").textContent = "__:__";
+
+    })
+}
 function updateTime(){
     localStorage.getItem('duration');
     let start = localStorage.getItem('start');
@@ -26,5 +41,6 @@ function updateTime(){
     document.querySelector('#remainder .countdown').textContent = `${hrs}:${mins % 60}:${math.floor(secs % 60)}`;
 }
 
+resetTime();
 setInterval(updateTime, 250);
 updateTime();
