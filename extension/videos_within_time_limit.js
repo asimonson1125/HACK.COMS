@@ -1,6 +1,3 @@
-const script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
-document.head.appendChild(script);
 
 function getTimeFromAriaLabel(ariaLabel) {
     var match = ariaLabel.match(/(\d+) hours?/);
@@ -17,6 +14,7 @@ function getTimeFromAriaLabel(ariaLabel) {
 
 function createNewPieChart(id, Time_limit, Video_length) {
     // Create a new canvas element
+    let duration = document.getElementById(id + "newPieChart") ? 0 : 500;
     const newCanvas = document.createElement("canvas");
     newCanvas.id = id + "newPieChart";
     newCanvas.style.position = 'absolute';
@@ -55,18 +53,33 @@ function createNewPieChart(id, Time_limit, Video_length) {
         title: {
           display: false,
           text: "New Pie Chart"
-        }
+        },
+        animation: {
+            duration: duration  // Disable all animations
+          }
       }
     });
   
     // Return the new canvas element
     return newCanvas;
 }
-script.onload = () => {
+
+
 if(document.location.host == "www.youtube.com"){
     let arr = [];
     // Define the time limit in seconds
-    let time_limit = 300;
+
+    let start = document.__HACKATHON_start;
+    if (start < 1) start = 0;
+    let ms = start > 1 ? document.__HACKATHON_remaining - (Date.now() - start) : document.__HACKATHON_remaining;
+
+    let secs = ms / 1000;
+    let time_limit = secs;
+    let mins = Math.floor(secs / 60);
+    let hrs = Math.floor(mins / 60);
+    console.log(`${hrs}:${mins % 60}:${Math.floor(secs % 60)}`);
+    console.log(secs);
+    // let time_limit = 300;
     document.querySelectorAll('ytd-rich-grid-media').forEach((x) => {
         const id = x.querySelector('#video-title-link')
         const thumbnailElement = x.querySelector('#thumbnail');
@@ -151,4 +164,4 @@ if(document.location.host == "www.youtube.com"){
         console.log(x.querySelector('#video-title').textContent);
         console.log(x.querySelector('#time-status #text').ariaLabel);
     })*/
-}}
+}
