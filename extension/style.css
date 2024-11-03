@@ -1,5 +1,5 @@
 body {
-    background: #dddddd;
+    background: #ece5e1;
     width: 280px;
     margin: 12px;
     border-radius: 20px;
@@ -11,10 +11,51 @@ body {
     display: inline-block;
     padding: 12px 12px;
     border-radius: 30px;
-    background: #dddddd;
+    background: #ece5e1;
+    align-items: center; /*baseline?*/
 }
 
 .timer__btn{
     margin-left: 5px;
-    border-radius: 50%;
+    border-radius: 40%;
+    background: #ff8b18;
+    align-items: center; /* Center icon inside button */
+    justify-content: center;
 }
+
+
+
+
+
+/* Input styling */
+/*
+.timer input[type="number"] {
+    width: 50px; /* Fixed width for consistency */
+    /* padding: 8px;
+    font-size: 1.2em;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+} */
+
+/* Colon styling */
+/*.colon {
+    font-size: 1.2em;
+}
+
+/* Button styling */
+/*.timer__btn {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center; /* Center icon inside button */
+    /* justify-content: center;
+    cursor: pointer;
+} */
+
+/*.timer__btn .material-icons {
+    font-size: 24px; /* Icon size */
+/* } */
