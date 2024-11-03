@@ -16,11 +16,11 @@
     <body>
         <h1>Anti-Doomscroller</h1>
         <div class = "timer">
-        <input type = "number" id = "hourInput", placeholder = "00", min = "0" max = "100">
+        <input type = "number" id = "hourInput", placeholder = "HH", min = "0" max = "100">
         <span class="colon">:</span>
-        <input type = "number" id = "minuteInput", placeholder = "00", min = "0", max = "59">
+        <input type = "number" id = "minuteInput", placeholder = "MM", min = "0", max = "59">
         <span class="colon">:</span>
-        <input type="number" id="secondInput", placeholder="00", min = "0", max = "59">
+        <input type="number" id="secondInput", placeholder="SS", min = "0", max = "59">
             <button type = "button" class = "timer__btn timer__btn--start">
                 <span class = "material-icons">play_arrow</span>
             </button>
@@ -36,6 +36,10 @@
             <div class="countdown">__:__</div>
         </div>
         <script src = "prompt.js"></script>
+
+        <footer>
+            <a href = "helpMenu.html" target="_blank" rel="noopener noreferrer">Help</a>
+        </footer>
     </body>
 
 
