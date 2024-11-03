@@ -1,0 +1,20 @@
+body {
+    background: #dddddd;
+    width: 280px;
+    margin: 12px;
+    border-radius: 20px;
+}
+
+
+.timer{
+    font-family: sans-serif;
+    display: inline-block;
+    padding: 12px 12px;
+    border-radius: 30px;
+    background: #dddddd;
+}
+
+.timer__btn{
+    margin-left: 5px;
+    border-radius: 50%;
+}
