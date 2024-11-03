@@ -136,8 +136,7 @@ if(document.location.host == "www.youtube.com"){
             gray_box.style.width = '100%';
             gray_box.style.height = '100%';
             gray_box.style.background = 'black';  //sfg
-            gray_box.style.border = 'grey';  //sfg
-            gray_box.style.borderBlockWidth = 4;  //sfg
+            gray_box.style.border = '3px solid #ff8b18';  //sfg
             gray_box.style.zIndex = '1000'; // to ensure it covers the thumbnail
 
             // add a text element on top of the gray box
@@ -148,11 +147,15 @@ if(document.location.host == "www.youtube.com"){
             text_element.style.transform = 'translate(-50%, -50%)';
             text_element.style.textAlign = 'center';
             text_element.style.color = 'white';
-            text_element.style.fontSize = '16px';
-            text_element.innerHTML = 'Video length too long<br>Length: ' + arr[i].time;
-            text_element.style.zIndex = '1001'; // to ensure it's on top of the gray box
+            text_element.style.fontSize = '26px';
+            text_element.innerHTML = 'Video is too long :(';
+            const text_element2 = document.createElement('div');
+            text_element2.style.fontSize = '12px';
+            text_element2.style.marginUp = '5px';
+            text_element2.innerHTML = Math.round((getTimeFromAriaLabel(arr[i].time) - time_limit)/60) + ' minutes over limit';
             arr[i].thumbnailElement.appendChild(gray_box);
-            arr[i].thumbnailElement.appendChild(text_element);
+            gray_box.appendChild(text_element);
+            text_element.appendChild(text_element2);
 
 
             arr.splice(i, 1);
