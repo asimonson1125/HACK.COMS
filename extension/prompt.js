@@ -39,7 +39,6 @@ function resetTime(){
 }
 
 function updateTime(){
-    if (paused) return;
     localStorage.getItem('duration');
     let start = localStorage.getItem('start');
     if (start < 1) start = 0;
