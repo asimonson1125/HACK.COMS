@@ -1,4 +1,3 @@
-
 function getTimeFromAriaLabel(ariaLabel) {
     var match = ariaLabel.match(/(\d+) hours?/);
     var hours = match ? parseInt(match[1]) : 0;
@@ -66,6 +65,9 @@ function createNewPieChart(id, Time_limit, Video_length) {
 
 
 if(document.location.host == "www.youtube.com"){
+    const dismissibleElement = 0;
+    const parentElement = 0;
+    homepage = false;
     let arr = [];
     // Define the time limit in seconds
 
@@ -81,12 +83,12 @@ if(document.location.host == "www.youtube.com"){
     console.log(secs);
     // let time_limit = 300;
     document.querySelectorAll('ytd-rich-grid-media').forEach((x) => {
-        const id = x.querySelector('#video-title-link')
+        homepage = true;
         const thumbnailElement = x.querySelector('#thumbnail');
         const dismissibleElement = x.querySelector('#dismissible');
+        const parentElement = dismissibleElement.parentNode;
         try {
             arr.push({
-                id: id.href,
                 title: x.querySelector('#video-title').textContent,
                 time: x.querySelector('#time-status #text').ariaLabel,
                 thumbnailElement: thumbnailElement
@@ -95,26 +97,25 @@ if(document.location.host == "www.youtube.com"){
         }
     })
     document.querySelectorAll('ytd-compact-video-renderer').forEach((x) => {
-        const id = x.querySelector('#video-title-link')
-        const thumbnailElement = x.querySelector('#thumbnail');
+        //debugger;
+        const thumbnailElement = x;
         const dismissibleElement = x.querySelector('#dismissible');
+        const parentElement = dismissibleElement.parentNode;
         try {
             arr.push({
-                id: id.href,
-                title: x.querySelector('#video-title').textContent,
-                time: x.querySelector('#time-status #text').ariaLabel,
+                title: x.querySelector('#video-title').title,
+                time: x.querySelector('badge-shape').ariaLabel,
                 thumbnailElement: thumbnailElement
             });
         } catch(e) {
         }
     })
     document.querySelectorAll('ytd-video-renderer').forEach((x) => {
-        const id = x.querySelector('#video-title-link')
         const thumbnailElement = x.querySelector('#thumbnail');
         const dismissibleElement = x.querySelector('#dismissible');
+        const parentElement = dismissibleElement.parentNode;
         try {
             arr.push({
-                id: id.href,
                 title: x.querySelector('#video-title').textContent,
                 time: x.querySelector('#time-status #text').ariaLabel,
                 thumbnailElement: thumbnailElement
@@ -123,6 +124,8 @@ if(document.location.host == "www.youtube.com"){
         }
     })
     for (let i = 0; i < arr.length; i++) {
+        // const parentElement = document.querySelector('#dismissible').parentElement;
+        // debugger;
         videoTime = getTimeFromAriaLabel(arr[i].time);
         if (videoTime > time_limit) {
             // add a gray box to cover the thumbnail
@@ -148,14 +151,14 @@ if(document.location.host == "www.youtube.com"){
             text_element.style.fontSize = '16px';
             text_element.innerHTML = 'Video length too long<br>Length: ' + arr[i].time;
             text_element.style.zIndex = '1001'; // to ensure it's on top of the gray box
-
             arr[i].thumbnailElement.appendChild(gray_box);
             arr[i].thumbnailElement.appendChild(text_element);
+
 
             arr.splice(i, 1);
             i--; // decrement i since we removed an element
         } else {
-            const newPieChart = createNewPieChart(arr[i].id, time_limit, videoTime);
+            const newPieChart = createNewPieChart(arr[i].title, time_limit, videoTime);
             arr[i].thumbnailElement.appendChild(newPieChart);
         }
     }
