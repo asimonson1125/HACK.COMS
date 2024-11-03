@@ -15,9 +15,32 @@ function updateTrigger(tab){
         
 }
 
+api.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    console.log("Message received from content script:", message);
+    
+    // Do something with the message
+    if (message.greeting === "triggerCharts") {
+        triggerCharts();
+    }
+});
+
 api.tabs.onUpdated.addListener(async function(tabId, changeInfo, tab) {
     updateTrigger(tab);
+    await api.scripting.executeScript({
+        target: { tabId: tabId },
+        files: ["/lib/chart.js"]
+      });
+
+    console.log("Injected chart.js into", tab);
 });
+
+async function triggerCharts(){
+    tab = await browser.tabs.query({currentWindow: true, active: true});
+    api.scripting.executeScript({
+        target: { tabId: tab[0].id },
+        files: ["/videos_within_time_limit.js"]
+    });
+}
   
 api.tabs.onActivated.addListener(async function(tabId) {
     updateTrigger(await api.tabs.get(tabId.tabId));
