@@ -1,7 +1,6 @@
 const script = document.createElement('script');
 script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
 document.head.appendChild(script);
-await fetch('https://cdn.jsdelivr.net/npm/chart.js');
 
 function getTimeFromAriaLabel(ariaLabel) {
     var match = ariaLabel.match(/(\d+) hours?/);
@@ -20,10 +19,13 @@ function createNewPieChart(id, Time_limit, Video_length) {
     // Create a new canvas element
     const newCanvas = document.createElement("canvas");
     newCanvas.id = id + "newPieChart";
-    newCanvas.width = 200;
-    newCanvas.height = 200;
-    newCanvas.style.width = "200px";
-    newCanvas.style.height = "200px";
+    newCanvas.style.position = 'absolute';
+    newCanvas.style.top = '0';
+    newCanvas.style.left = '0';
+    newCanvas.style.width = '75px';
+    newCanvas.style.height = '75px';
+    newCanvas.style.maxWidth = '75px';
+    newCanvas.style.maxHeight = '75px';
     document.body.appendChild(newCanvas);
   
     // Get the new canvas element
@@ -44,8 +46,14 @@ function createNewPieChart(id, Time_limit, Video_length) {
       type: "pie",
       data: newData,
       options: {
+        responsive: false,
+        plugins: {
+            legend: {
+              display: false  // Hide the legend
+            }
+          },
         title: {
-          display: true,
+          display: false,
           text: "New Pie Chart"
         }
       }
@@ -54,7 +62,7 @@ function createNewPieChart(id, Time_limit, Video_length) {
     // Return the new canvas element
     return newCanvas;
 }
-
+script.onload = () => {
 if(document.location.host == "www.youtube.com"){
     let arr = [];
     let time_limit = 1800;
@@ -107,10 +115,6 @@ if(document.location.host == "www.youtube.com"){
             i--; // decrement i since we removed an element
         } else {
             const newPieChart = createNewPieChart(arr[i].id, time_limit, videoTime);
-            newPieChart.style.width = "200px";
-            newPieChart.style.height = "200px";
-            newPieChart.style.maxWidth = "200px";
-            newPieChart.style.maxHeight = "200px";
             arr[i].thumbnailElement.appendChild(newPieChart);
         }
     }
@@ -119,4 +123,4 @@ if(document.location.host == "www.youtube.com"){
         console.log(x.querySelector('#video-title').textContent);
         console.log(x.querySelector('#time-status #text').ariaLabel);
     })*/
-}
+}}
