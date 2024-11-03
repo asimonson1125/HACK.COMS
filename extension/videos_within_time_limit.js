@@ -135,6 +135,7 @@ if(document.location.host == "www.youtube.com"){
             gray_box.style.left = '0';
             gray_box.style.width = '100%';
             gray_box.style.height = '100%';
+            gray_box.style.boxSizing = 'border-box';
             gray_box.style.background = 'black';  //sfg
             gray_box.style.border = '3px solid #ff8b18';  //sfg
             gray_box.style.zIndex = '1000'; // to ensure it covers the thumbnail
@@ -149,13 +150,15 @@ if(document.location.host == "www.youtube.com"){
             text_element.style.color = 'white';
             text_element.style.fontSize = '26px';
             text_element.innerHTML = 'Video is too long :(';
+
             const text_element2 = document.createElement('div');
             text_element2.style.fontSize = '12px';
-            text_element2.style.marginUp = '5px';
+            text_element2.style.marginTop = '5px';
             text_element2.innerHTML = Math.round((getTimeFromAriaLabel(arr[i].time) - time_limit)/60) + ' minutes over limit';
-            arr[i].thumbnailElement.appendChild(gray_box);
             gray_box.appendChild(text_element);
             text_element.appendChild(text_element2);
+            arr[i].thumbnailElement.appendChild(gray_box);
+
 
 
             arr.splice(i, 1);
