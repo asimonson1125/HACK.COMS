@@ -20,17 +20,11 @@ document.querySelector(".timer__btn--start").addEventListener("click", function(
 
 function resetTime(){
     document.querySelector(".timer__btn--reset").addEventListener("click", function(){
-
-
-        // console.log("test");
-        totalSeconds = 0;
-
         document.getElementById("hourInput").value = "";
         document.getElementById("minuteInput").value = "";
         document.getElementById("secondInput").value = "";
 
-        document.querySelector(".countdown").textContent = "__:__";
-
+        api.runtime.sendMessage({ greeting: "Stop Timer", data: ""})
     })
 }
 function updateTime(){

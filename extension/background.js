@@ -28,6 +28,12 @@ api.runtime.onMessage.addListener((message, sender, sendResponse) => {
     else if (message.greeting === "Duration Set") {
         setTimer(message.data);
     }
+    else if (message.greeting === "Stop Timer") {
+        stopTimer(message.data);
+    }
+    else if (message.greeting === "Start Timer") {
+        startTimer(message.data);
+    }
 });
 
 api.tabs.onUpdated.addListener(async function(tabId, changeInfo, tab) {
