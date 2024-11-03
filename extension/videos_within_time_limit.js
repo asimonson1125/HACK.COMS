@@ -1,6 +1,6 @@
-const script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
-document.head.appendChild(script);
+// const script = document.createElement('script');
+// script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
+// document.head.appendChild(script);
 
 function getTimeFromAriaLabel(ariaLabel) {
     var match = ariaLabel.match(/(\d+) hours?/);
@@ -17,6 +17,7 @@ function getTimeFromAriaLabel(ariaLabel) {
 
 function createNewPieChart(id, Time_limit, Video_length) {
     // Create a new canvas element
+    let duration = document.getElementById(id + "newPieChart") ? 0 : 500;
     const newCanvas = document.createElement("canvas");
     newCanvas.id = id + "newPieChart";
     newCanvas.style.position = 'absolute';
@@ -55,14 +56,18 @@ function createNewPieChart(id, Time_limit, Video_length) {
         title: {
           display: false,
           text: "New Pie Chart"
-        }
+        },
+        animation: {
+            duration: duration  // Disable all animations
+          }
       }
     });
   
     // Return the new canvas element
     return newCanvas;
 }
-script.onload = () => {
+
+
 if(document.location.host == "www.youtube.com"){
     let arr = [];
     let time_limit = 1800;
@@ -123,4 +128,4 @@ if(document.location.host == "www.youtube.com"){
         console.log(x.querySelector('#video-title').textContent);
         console.log(x.querySelector('#time-status #text').ariaLabel);
     })*/
-}}
+}
