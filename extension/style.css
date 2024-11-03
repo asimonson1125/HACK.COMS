@@ -1,11 +1,13 @@
 body {
     background: #ece5e1;
-    width: 280px;
+    width: 350px;
     margin: 12px;
     border-radius: 20px;
 }
 
-
+h1{
+    text-align: center;
+}
 .timer{
     font-family: sans-serif;
     display: inline-block;
@@ -19,8 +21,8 @@ body {
     margin-left: 5px;
     border-radius: 40%;
     background: #ff8b18;
-    align-items: center; /* Center icon inside button */
-    justify-content: center;
+    /*align-items: center; /* Center icon inside button */
+    /* justify-content: center; */
 }
 
 
