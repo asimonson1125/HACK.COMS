@@ -15,7 +15,7 @@ document.querySelector(".timer__btn--start").addEventListener("click", function(
     second = second ? second : 0;
 
     duration = ((hour * 3600) + (minute * 60) + second) * 1000;
-    paused = false;
+    if (duration < 1000) return;
     api.runtime.sendMessage({ greeting: "Duration Set", data: duration });
 
 })
@@ -28,13 +28,11 @@ function resetTime(){
 
         if(!pause){
             pause = true;
-            const start = parseInt(localStorage.getItem('start'), 10);
             api.runtime.sendMessage({ greeting: "Stop Timer", data: ""})
         }
         else{
             pause = false;
-            localStorage.setItem('start', Date.now());
-            api.runtime.sendMessage({ greeting: "Resume Timer", data: remainingTime });
+            api.runtime.sendMessage({ greeting: "Start Timer", data: "" });
         }})
 }
 
