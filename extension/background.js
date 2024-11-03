@@ -52,7 +52,6 @@ async function triggerCharts(){
         target: { tabId: tab[0].id },
         func: (remaining, start) => {
             // Your code here, using `arg`
-            console.log("Argument received:", remaining, start);
             document.__HACKATHON_remaining = parseInt(remaining);
             document.__HACKATHON_start = parseInt(start);
 
@@ -75,7 +74,7 @@ function setTimer(miliseconds){
     localStorage.setItem('remaining', miliseconds);
     localStorage.removeItem('start');
     updateTrigger();
-    return `Timer set for ${minutes} minutes!`
+    return `Timer set for ${miliseconds/1000} seconds!`
 }
 
 function getDuration(){
@@ -83,6 +82,7 @@ function getDuration(){
 }
 
 function startTimer(){
+    stopTimer();
     localStorage.setItem('start', Date.now());
     setTimeout(alarm, getRemaining());
     api.action.setIcon({path: "/img/clock.png"});
@@ -90,7 +90,7 @@ function startTimer(){
 
 function stopTimer(){
     const start = localStorage.getItem('start');
-    if (start < 1) throw new Error("yikes");
+    if (start < 1) return -1;
     const elapsed = (Date.now() - start);
     localStorage.removeItem('start');
     api.action.setIcon({path: "/img/icon.png"});
@@ -110,7 +110,12 @@ function getRemaining(){
 
 function alarm(){
     if (getRemaining() >= 0 && localStorage.getItem('start') > 1) {
-        alert("Time's up, Jimbo!");
+        api.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            if (tabs[0]) { // Check if we have the active tab
+                console.log('alarm');
+              api.tabs.update(tabs[0].id, { url: "https://jamesclear.com/procrastination" });
+            }
+          });
     }
     localStorage.removeItem('start');
     localStorage.setItem('remaining', 0)

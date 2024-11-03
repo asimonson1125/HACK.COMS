@@ -12,7 +12,7 @@ function sleep(ms) {
       setInterval(() => {api.runtime.sendMessage({ greeting: "triggerCharts", data: "trigger charts" })}, 1000)
       // Function to be triggered when new videos load
       async function onVideosLoaded() {
-        console.log('New videos loaded!');
+        // console.log('New videos loaded!');
         const myChange = Date.now();
         lastChange = myChange;
         await sleep(1000);

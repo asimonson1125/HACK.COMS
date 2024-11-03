@@ -77,10 +77,10 @@ if(document.location.host == "www.youtube.com"){
 
     let secs = ms / 1000;
     let time_limit = secs;
-    let mins = Math.floor(secs / 60);
-    let hrs = Math.floor(mins / 60);
-    console.log(`${hrs}:${mins % 60}:${Math.floor(secs % 60)}`);
-    console.log(secs);
+    // let mins = Math.floor(secs / 60);
+    // let hrs = Math.floor(mins / 60);
+    // console.log(`${hrs}:${mins % 60}:${Math.floor(secs % 60)}`);
+    // console.log(secs);
     // let time_limit = 300;
     document.querySelectorAll('ytd-rich-grid-media').forEach((x) => {
         homepage = true;
