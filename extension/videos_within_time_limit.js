@@ -139,6 +139,7 @@ if(document.location.host == "www.youtube.com"){
             gray_box.style.background = 'black';  //sfg
             gray_box.style.border = '3px solid #ff8b18';  //sfg
             gray_box.style.zIndex = '1000'; // to ensure it covers the thumbnail
+            gray_box.className = 'video-length-text';
 
             // add a text element on top of the gray box
             const text_element = document.createElement('div');
@@ -164,6 +165,12 @@ if(document.location.host == "www.youtube.com"){
             arr.splice(i, 1);
             i--; // decrement i since we removed an element
         } else {
+            // remove the gray box and text element
+            const existingGrayBox = arr[i].thumbnailElement.querySelectorAll('.video-length-text');
+            const existingTextElement = arr[i].thumbnailElement.querySelectorAll('.video-length-text');
+            existingGrayBox.forEach((x) => x.remove());
+            existingTextElement.forEach((x) => x.remove());
+
             const newPieChart = createNewPieChart(arr[i].title, time_limit, videoTime);
             arr[i].thumbnailElement.appendChild(newPieChart);
         }

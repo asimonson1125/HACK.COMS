@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width= device-width, initial-scale = 1.0">
+    <title>helpMenu</title>
+    <style>
+        body {
+            margin: 0; /* Remove default margin */
+            display: flex; /* Use flexbox for alignment */
+            justify-content: center; /* Center the image horizontally */
+            align-items: center; /* Center the image vertically */
+            height: 100vh; /* Make the body full height */
+            background-color: #f0f0f0; /* Optional background color */
+        
+        }
+        .container{
+            text-align: center;
+        }
+        img {
+            max-width: 30%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+        .caption {
+            margin-top: 10px; /* Space between image and text */
+            font-size: 1rem; /* Font size for the caption text */
+            color: #333; /* Text col
+            or */
+        }
+
+        .caption_i {
+            white-space: pre-line;
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+    
+
+    
+    </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class = "imageContainer">
+            <img src="img/helpImage.jpg" alt="Demo image"s>
+            <img src="img/demo1.jpg" alt="Demo image">
+            <img src="img/demo2.jpg" alt="Demo image">
+            </div>
+            <div class="caption">1: Enter a timer in a format of HH:MM:SS form </div>
+            <div class="caption">2: Click the play button the start the timer </div>
+            <div class="caption">3: Click to stop the timer or resume the timer </div>
+            <div class="caption">4: Remaining Time display</div>
+            <div class="caption_i">Once the time limit is set, the extension filters out videos exceeding the remaining time. 
+                For videos that fit within this limit, a pie chart illustrates the proportion of 
+                time each video will consume relative to the total available.</div>
+        </div>
+        
+    </body>
+</html>
