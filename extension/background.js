@@ -1,6 +1,10 @@
 const api = typeof chrome !== "undefined" ? chrome : browser;
 
-function updateTrigger(tab){
+async function updateTrigger(tab=undefined){
+    if (tab == undefined){
+        tab = await browser.tabs.query({currentWindow: true, active: true});
+        tab = tab[0];
+    }
     const targetUrls = [
     "https://www.google.com",
     "https://www.youtube.com"
@@ -40,6 +44,17 @@ async function triggerCharts(){
     tab = await browser.tabs.query({currentWindow: true, active: true});
     api.scripting.executeScript({
         target: { tabId: tab[0].id },
+        func: (remaining, start) => {
+            // Your code here, using `arg`
+            console.log("Argument received:", remaining, start);
+            document.__HACKATHON_remaining = parseInt(remaining);
+            document.__HACKATHON_start = parseInt(start);
+
+        },
+        args: [localStorage.getItem('remaining'), localStorage.getItem('start')]  // Pass arguments as an array
+    });
+    api.scripting.executeScript({
+        target: { tabId: tab[0].id },
         files: ["/videos_within_time_limit.js"]
     });
 }
@@ -52,6 +67,7 @@ function setTimer(miliseconds){
     // const miliseconds = minutes * 60000;
     localStorage.setItem('duration', miliseconds);
     localStorage.setItem('remaining', miliseconds);
+    localStorage.removeItem('start');
     updateTrigger();
     return `Timer set for ${minutes} minutes!`
 }
