@@ -28,13 +28,11 @@ function resetTime(){
 
         if(!pause){
             pause = true;
-            const start = parseInt(localStorage.getItem('start'), 10);
             api.runtime.sendMessage({ greeting: "Stop Timer", data: ""})
         }
         else{
             pause = false;
-            localStorage.setItem('start', Date.now());
-            api.runtime.sendMessage({ greeting: "Resume Timer", data: remainingTime });
+            api.runtime.sendMessage({ greeting: "Start Timer", data: "" });
         }})
 }
 
