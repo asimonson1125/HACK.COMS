@@ -132,7 +132,9 @@ if(document.location.host == "www.youtube.com"){
             gray_box.style.left = '0';
             gray_box.style.width = '100%';
             gray_box.style.height = '100%';
-            gray_box.style.background = 'gray';
+            gray_box.style.background = 'black';  //sfg
+            gray_box.style.border = 'grey';  //sfg
+            gray_box.style.borderBlockWidth = 4;  //sfg
             gray_box.style.zIndex = '1000'; // to ensure it covers the thumbnail
 
             // add a text element on top of the gray box
