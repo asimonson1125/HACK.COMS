@@ -1,5 +1,6 @@
 const api = typeof chrome !== "undefined" ? chrome : browser;
 let duration = 0;
+let pause = false;
 
 document.querySelector(".timer__btn--start").addEventListener("click", function(){
 
@@ -14,6 +15,7 @@ document.querySelector(".timer__btn--start").addEventListener("click", function(
     second = second ? second : 0;
 
     duration = ((hour * 3600) + (minute * 60) + second) * 1000;
+    paused = false;
     api.runtime.sendMessage({ greeting: "Duration Set", data: duration });
 
 })
@@ -24,10 +26,20 @@ function resetTime(){
         document.getElementById("minuteInput").value = "";
         document.getElementById("secondInput").value = "";
 
-        api.runtime.sendMessage({ greeting: "Stop Timer", data: ""})
-    })
+        if(!pause){
+            pause = true;
+            const start = parseInt(localStorage.getItem('start'), 10);
+            api.runtime.sendMessage({ greeting: "Stop Timer", data: ""})
+        }
+        else{
+            pause = false;
+            localStorage.setItem('start', Date.now());
+            api.runtime.sendMessage({ greeting: "Resume Timer", data: remainingTime });
+        }})
 }
+
 function updateTime(){
+    if (paused) return;
     localStorage.getItem('duration');
     let start = localStorage.getItem('start');
     if (start < 1) start = 0;
