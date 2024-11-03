@@ -1,25 +1,16 @@
-//Adding event listener to the button
 
+var totalSeconds = 0;
 
-var totalSecond = 0;
-document.querySelector(".button-5").addEventListener("click", function() {
+document.querySelector(".timer__btn--start").addEventListener("click", function(){
 
+    var hour = parseInt(document.getElementById("hourInput").value, 10);
+    
 
-    const hrInput = document.getElementById("hourInput").value;
-    const minInput = document.getElementById("minuteInput").value;
-    const secInput = document.getElementById("secondsInput").value;
+    var minute = parseInt(document.getElementById("minuteInput").value, 10);
 
+    var second = parseInt(document.getElementById("secondInput").value, 10);
 
+    totalSeconds = (hour * 3600) + (minute * 60) + second;
 
+})
 
-    var hr = parseInt(hrInput, 10);
-    var min = parseInt(minInput, 10);
-    var sec = parseInt(secInput, 10);
-
-
-   totalSecond = (hr * 3600) + (min * 60) + sec;
-//    document.querySelector('h1').textContent = totalSecond;
-
-
-}
-)
