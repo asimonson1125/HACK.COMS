@@ -84,6 +84,7 @@ function getDuration(){
 
 function startTimer(){
     localStorage.setItem('start', Date.now());
+    setTimeout(alarm, getRemaining());
 }
 
 function stopTimer(){
@@ -103,4 +104,12 @@ function getRemaining(){
     if (start < 1) return storedRemaining;
     const elapsed = (Date.now() - start);
     return storedRemaining - elapsed;
+}
+
+function alarm(){
+    if (getRemaining() >= 0 && localStorage.getItem('start') > 1) {
+        alert("Time's up, Jimbo!");
+    }
+    localStorage.removeItem('start');
+    localStorage.setItem('remaining', 0)
 }
