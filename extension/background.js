@@ -10,10 +10,10 @@ async function updateTrigger(tab=undefined){
     "https://www.youtube.com"
     ];
     if (targetUrls.some(turl => tab.url.startsWith(turl))) {
-        api.action.setIcon({path: "/img/clock.png"});
-        startTimer();
+        if (getRemaining() > 1000) {
+            startTimer();
+        }
     } else {
-        api.action.setIcon({path: "/img/icon.png"});
         stopTimer();
     }
         
@@ -29,10 +29,10 @@ api.runtime.onMessage.addListener((message, sender, sendResponse) => {
         setTimer(message.data);
     }
     else if (message.greeting === "Stop Timer") {
-        stopTimer(message.data);
+        stopTimer();
     }
     else if (message.greeting === "Start Timer") {
-        startTimer(message.data);
+        startTimer();
     }
 });
 
@@ -84,6 +84,8 @@ function getDuration(){
 
 function startTimer(){
     localStorage.setItem('start', Date.now());
+    setTimeout(alarm, getRemaining());
+    api.action.setIcon({path: "/img/clock.png"});
 }
 
 function stopTimer(){
@@ -91,6 +93,7 @@ function stopTimer(){
     if (start < 1) throw new Error("yikes");
     const elapsed = (Date.now() - start);
     localStorage.removeItem('start');
+    api.action.setIcon({path: "/img/icon.png"});
     const timeRemaining = getRemaining() - elapsed;
     localStorage.setItem('remaining', timeRemaining);
     console.log(elapsed/1000 + " seconds elapsed")
@@ -103,4 +106,12 @@ function getRemaining(){
     if (start < 1) return storedRemaining;
     const elapsed = (Date.now() - start);
     return storedRemaining - elapsed;
+}
+
+function alarm(){
+    if (getRemaining() >= 0 && localStorage.getItem('start') > 1) {
+        alert("Time's up, Jimbo!");
+    }
+    localStorage.removeItem('start');
+    localStorage.setItem('remaining', 0)
 }
