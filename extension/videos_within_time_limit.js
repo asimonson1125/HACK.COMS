@@ -1,6 +1,3 @@
-// const script = document.createElement('script');
-// script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
-// document.head.appendChild(script);
 
 function getTimeFromAriaLabel(ariaLabel) {
     var match = ariaLabel.match(/(\d+) hours?/);
@@ -71,7 +68,18 @@ function createNewPieChart(id, Time_limit, Video_length) {
 if(document.location.host == "www.youtube.com"){
     let arr = [];
     // Define the time limit in seconds
-    let time_limit = 300;
+
+    let start = document.__HACKATHON_start;
+    if (start < 1) start = 0;
+    let ms = start > 1 ? document.__HACKATHON_remaining - (Date.now() - start) : document.__HACKATHON_remaining;
+
+    let secs = ms / 1000;
+    let time_limit = secs;
+    let mins = Math.floor(secs / 60);
+    let hrs = Math.floor(mins / 60);
+    console.log(`${hrs}:${mins % 60}:${Math.floor(secs % 60)}`);
+    console.log(secs);
+    // let time_limit = 300;
     document.querySelectorAll('ytd-rich-grid-media').forEach((x) => {
         const id = x.querySelector('#video-title-link')
         const thumbnailElement = x.querySelector('#thumbnail');
