@@ -48,7 +48,13 @@ function updateTime(){
     let secs = ms / 1000;
     let mins = Math.floor(secs / 60);
     let hrs = Math.floor(mins / 60);
-    document.querySelector('#remainder .countdown').textContent = `${hrs}:${mins % 60}:${Math.floor(secs % 60)}`;
+
+    secs = Math.floor(secs % 60);
+    secs = secs < 10 ? '0' + secs.toString() : secs;
+    mins = mins % 60;
+    mins = mins < 10 ? '0' + mins.toString() : mins;
+    
+    document.querySelector('#remainder .countdown').textContent = `${hrs}:${mins}:${secs}`;
 }
 
 resetTime();
