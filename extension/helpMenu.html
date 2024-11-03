@@ -19,26 +19,42 @@
             text-align: center;
         }
         img {
-            max-width: 40%;
+            max-width: 30%;
             height: auto;
             border: 1px solid #ccc;
         }
         .caption {
             margin-top: 10px; /* Space between image and text */
             font-size: 1rem; /* Font size for the caption text */
-            color: #333; /* Text color */
+            color: #333; /* Text col
+            or */
         }
+
+        .caption_i {
+            white-space: pre-line;
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+    
+
+    
     </style>
     </head>
 
     <body>
         <div class="container">
-            <img src="helpImage.jpg" alt="Demo image">
+            <div class = "imageContainer">
+            <img src="helpImage.jpg" alt="Demo image"s>
+            <img src="demo1.jpg" alt="Demo image">
+            <img src="demo2.jpg" alt="Demo image">
+            </div>
             <div class="caption">1: Enter a timer in a format of HH:MM:SS form </div>
             <div class="caption">2: Click the play button the start the timer </div>
             <div class="caption">3: Click to stop the timer or resume the timer </div>
             <div class="caption">4: Remaining Time display</div>
-            <div class="caption"></div>
+            <div class="caption_i">Once the time limit is set, the extension filters out videos exceeding the remaining time. 
+                For videos that fit within this limit, a pie chart illustrates the proportion of 
+                time each video will consume relative to the total available.</div>
         </div>
         
     </body>
