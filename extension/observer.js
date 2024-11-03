@@ -6,7 +6,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-setInterval(() => {api.runtime.sendMessage({ greeting: "triggerCharts", data: "trigger charts" })}, 500)
+// setInterval(() => {api.runtime.sendMessage({ greeting: "triggerCharts", data: "trigger charts" })}, 500)
 
 (function() {
     // Check if we're on a YouTube page
@@ -17,7 +17,7 @@ setInterval(() => {api.runtime.sendMessage({ greeting: "triggerCharts", data: "t
         const myChange = Date.now();
         lastChange = myChange;
         await sleep(1000);
-        // if (lastChange == myChange) api.runtime.sendMessage({ greeting: "triggerCharts", data: "trigger charts" });
+        if (lastChange == myChange) api.runtime.sendMessage({ greeting: "triggerCharts", data: "trigger charts" });
       }
     let lastTriggerTime = 0;
     let queuedMutations = [];

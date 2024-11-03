@@ -17,10 +17,12 @@ function updateTrigger(tab){
 
 api.runtime.onMessage.addListener((message, sender, sendResponse) => {
     console.log("Message received from content script:", message);
-    
     // Do something with the message
     if (message.greeting === "triggerCharts") {
         triggerCharts();
+    }
+    else if (message.greeting === "Duration Set") {
+        setTimer(message.data);
     }
 });
 
@@ -46,10 +48,11 @@ api.tabs.onActivated.addListener(async function(tabId) {
     updateTrigger(await api.tabs.get(tabId.tabId));
 });
 
-function setTimer(minutes){
-    const miliseconds = minutes * 60000;
+function setTimer(miliseconds){
+    // const miliseconds = minutes * 60000;
     localStorage.setItem('duration', miliseconds);
     localStorage.setItem('remaining', miliseconds);
+    updateTrigger();
     return `Timer set for ${minutes} minutes!`
 }
 
