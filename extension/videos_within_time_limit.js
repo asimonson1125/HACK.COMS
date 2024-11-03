@@ -1,7 +1,3 @@
-const script = document.createElement('script');
-script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
-document.head.appendChild(script);
-
 function getTimeFromAriaLabel(ariaLabel) {
     var match = ariaLabel.match(/(\d+) hours?/);
     var hours = match ? parseInt(match[1]) : 0;
@@ -74,7 +70,18 @@ if(document.location.host == "www.youtube.com"){
     homepage = false;
     let arr = [];
     // Define the time limit in seconds
-    let time_limit = 300;
+
+    let start = document.__HACKATHON_start;
+    if (start < 1) start = 0;
+    let ms = start > 1 ? document.__HACKATHON_remaining - (Date.now() - start) : document.__HACKATHON_remaining;
+
+    let secs = ms / 1000;
+    let time_limit = secs;
+    let mins = Math.floor(secs / 60);
+    let hrs = Math.floor(mins / 60);
+    console.log(`${hrs}:${mins % 60}:${Math.floor(secs % 60)}`);
+    console.log(secs);
+    // let time_limit = 300;
     document.querySelectorAll('ytd-rich-grid-media').forEach((x) => {
         homepage = true;
         const thumbnailElement = x.querySelector('#thumbnail');
@@ -128,7 +135,9 @@ if(document.location.host == "www.youtube.com"){
             gray_box.style.left = '0';
             gray_box.style.width = '100%';
             gray_box.style.height = '100%';
-            gray_box.style.background = 'gray';
+            gray_box.style.background = 'black';  //sfg
+            gray_box.style.border = 'grey';  //sfg
+            gray_box.style.borderBlockWidth = 4;  //sfg
             gray_box.style.zIndex = '1000'; // to ensure it covers the thumbnail
 
             // add a text element on top of the gray box

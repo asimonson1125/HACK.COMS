@@ -6,11 +6,10 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-setInterval(() => {api.runtime.sendMessage({ greeting: "triggerCharts", data: "trigger charts" })}, 500)
-
 (function() {
     // Check if we're on a YouTube page
     if (window.location.hostname.indexOf('youtube.com') !== -1) {
+      setInterval(() => {api.runtime.sendMessage({ greeting: "triggerCharts", data: "trigger charts" })}, 1000)
       // Function to be triggered when new videos load
       async function onVideosLoaded() {
         console.log('New videos loaded!');
