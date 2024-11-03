@@ -14,3 +14,17 @@ document.querySelector(".timer__btn--start").addEventListener("click", function(
 
 })
 
+function updateTime(){
+    localStorage.getItem('duration');
+    let start = localStorage.getItem('start');
+    if (start < 1) start = 0;
+    let ms = start > 1 ? localStorage.getItem('remaining') - (Date.now() - start) : localStorage.getItem('remaining');
+
+    let secs = ms / 1000;
+    let mins = Math.floor(secs / 60);
+    let hrs = Math.floor(mins / 60);
+    document.querySelector('#remainder .countdown').textContent = `${hrs}:${mins % 60}:${math.floor(secs % 60)}`;
+}
+
+setInterval(updateTime, 250);
+updateTime();
