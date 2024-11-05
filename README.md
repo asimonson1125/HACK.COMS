@@ -8,7 +8,7 @@ The Anti-Doomscroller extension allows you to set a time limit on how long you w
 NOTE: This project is optimized for Firefox.  It may not work as intended on chromium-based browsers.
 
 After downloaded the zip and unzipping the folder follow these steps to activate the extenstion.
-1. In the search bar for Firefox, search for (about:debugging#/runtime/this-firefox)
+1. In the search bar for Firefox, search for `about:debugging#/runtime/this-firefox`
 2. Next click on the "Load Temporary Add-on..." button
 3. Navigate to the extension folder and select `manifest.json` (for chrome just select the folder)
 
